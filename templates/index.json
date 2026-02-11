@@ -1,12 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "main-hero",
-      "settings": {}
+      "settings": {
+        "kicker": "Somala Edition",
+        "heading": "Luxe discret. Présence assurée.",
+        "subheading": "Sélectionnez vos produits, l'équipe Somala s’occupe du style. Une boutique pensée pour une expérience premium.",
+        "primary_label": "Découvrir la collection",
+        "primary_link": "",
+        "secondary_label": "Notre histoire",
+        "secondary_link": "",
+        "aside_title_1": "Sélection Curated",
+        "aside_text_1": "Ajoutez uniquement des produits qui méritent une place dans votre vitrine.",
+        "aside_title_2": "Finition Premium",
+        "aside_text_2": "Visuels propres, descriptions sobres et pages rapides – l’élégance sans bruit.",
+        "aside_title_3": "Livraison Suivie",
+        "aside_text_3": "Transparence sur les délais, suivi clair, service client rassurant."
+      }
     },
     "featured": {
       "type": "featured-collection",
-      "settings": {}
+      "settings": {
+        "title": "Collection",
+        "subtitle": "Produits choisis pour leur allure et leur qualité.",
+        "collection": "",
+        "products_to_show": 8,
+        "show_vendor": false
+      }
     }
   },
   "order": [
