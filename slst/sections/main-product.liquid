@@ -1,0 +1,64 @@
+{% assign product = product %}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h1 class="section-title" style="font-size:28px;">{{ product.title }}</h1>
+        <p class="section-sub">{{ product.vendor }}</p>
+      </div>
+      <div class="badge">{{ product.price | money }}</div>
+    </div>
+
+    <div class="hero-grid" style="grid-template-columns:1fr 1fr; gap:18px;">
+      <div class="card" style="padding:0;">
+        <div class="thumb" style="aspect-ratio: 4/5;">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 1400 }}" alt="{{ product.title | escape }}" loading="lazy">
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card" style="padding:16px;">
+        {% form 'product', product %}
+          {% if product.has_only_default_variant == false %}
+            <label class="small" for="VariantSelect">{{ 'products.product.choose_variant' | t }}</label>
+            <select id="VariantSelect" name="id" class="input" style="margin:8px 0 12px;">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                  {{ variant.title }} — {{ variant.price | money }}
+                </option>
+              {% endfor %}
+            </select>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {% endif %}
+
+          <label class="small" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+          <input id="Quantity" class="input" type="number" name="quantity" value="1" min="1" style="margin:8px 0 12px;">
+
+          <button class="btn primary" type="submit" style="width:100%;">{{ 'products.product.add_to_cart' | t }}</button>
+
+          <div style="margin-top:14px;" class="small">
+            {{ section.settings.reassurance }}
+          </div>
+        {% endform %}
+
+        {% if product.description != blank %}
+          <div style="margin-top:16px; border-top:1px solid var(--border); padding-top:14px;">
+            <p class="footer-title" style="margin:0 0 8px;">{{ 'products.product.details' | t }}</p>
+            <div class="footer-text">{{ product.description }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Produit principal",
+  "settings": [
+    { "type": "textarea", "id": "reassurance", "label": "Texte de réassurance", "default": "Paiement sécurisé. Retours organisés sous 30 jours. Livraison suivie." }
+  ]
+}
+{% endschema %}

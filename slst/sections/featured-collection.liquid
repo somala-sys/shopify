@@ -1,0 +1,68 @@
+{% liquid
+  assign col = collections[section.settings.collection]
+  assign limit = section.settings.products_to_show
+%}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        <p class="section-sub">{{ section.settings.subtitle }}</p>
+      </div>
+      {% if col != blank %}
+        <a class="btn" href="{{ col.url }}">{{ 'general.navigation.view_all' | t }}</a>
+      {% endif %}
+    </div>
+
+    <div class="grid">
+      {% if col != blank and col.products_count > 0 %}
+        {% for product in col.products limit: limit %}
+          <a class="card" href="{{ product.url }}">
+            <div class="thumb">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}" loading="lazy">
+              {% endif %}
+            </div>
+            <div class="card-body">
+              <p class="card-title">{{ product.title }}</p>
+              <div class="price">
+                <span class="current">{{ product.price | money }}</span>
+                {% if product.compare_at_price_max > product.price %}
+                  <span class="compare">{{ product.compare_at_price_max | money }}</span>
+                {% endif %}
+              </div>
+              {% if section.settings.show_vendor and product.vendor != blank %}
+                <span class="small">{{ product.vendor }}</span>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..4) %}
+          <div class="card">
+            <div class="thumb"></div>
+            <div class="card-body">
+              <p class="card-title">Produit Somala {{ i }}</p>
+              <div class="price"><span class="current">—</span></div>
+              <span class="small">Ajoutez une collection dans cette section</span>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection en vedette",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Titre", "default": "Sélection du moment" },
+    { "type": "text", "id": "subtitle", "label": "Sous-titre", "default": "Produits choisis pour leur allure et leur qualité." },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "label": "Nombre de produits", "min": 4, "max": 12, "step": 1, "default": 8 },
+    { "type": "checkbox", "id": "show_vendor", "label": "Afficher le fournisseur (vendor)", "default": false }
+  ],
+  "presets": [{"name":"Collection en vedette"}]
+}
+{% endschema %}
