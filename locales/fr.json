@@ -1,0 +1,49 @@
+{
+  "accessibility": {
+    "skip_to_text": "Aller au contenu"
+  },
+  "general": {
+    "navigation": {
+      "shop": "Boutique",
+      "story": "Notre histoire",
+      "contact": "Contact",
+      "view_all": "Tout voir",
+      "continue_shopping": "Continuer les achats"
+    },
+    "search": {
+      "search": "Rechercher"
+    },
+    "cart": {
+      "cart": "Panier"
+    },
+    "footer": {
+      "links": "Liens",
+      "returns": "Retours",
+      "privacy": "Confidentialité"
+    }
+  },
+  "collections": {
+    "general": {
+      "subtitle": "Explorez la collection.",
+      "no_products": "Aucun produit dans cette collection."
+    }
+  },
+  "products": {
+    "product": {
+      "choose_variant": "Choisir une variante",
+      "quantity": "Quantité",
+      "add_to_cart": "Ajouter au panier",
+      "details": "Détails"
+    }
+  },
+  "cart": {
+    "general": {
+      "subtitle": "Finalisez votre sélection.",
+      "empty": "Votre panier est vide.",
+      "remove": "Retirer",
+      "update": "Mettre à jour",
+      "checkout": "Passer au paiement",
+      "total": "Total"
+    }
+  }
+}
