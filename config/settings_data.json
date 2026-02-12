@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/SML2.png",
+    "logo": "shopify://shop_images/logo_shopify_1_f73c5740-3088-4a7b-acc0-5bda9c9c6bda.png",
     "brand_wordmark": "SOMALA",
     "page_subtitle": "Une présence sobre, une signature dorée.",
     "footer_title": "Somala",
@@ -18,9 +18,9 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify://shop_images/SML2.png",
+          "logo": "shopify://shop_images/logo_shopify_1.png",
           "brand_wordmark": "SOMALA",
-          "main_menu": ""
+          "main_menu": "customer-account-main-menu"
         }
       },
       "footer": {
